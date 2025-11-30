@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Siti Hajar Sofia">
+    <meta name="keywords" content="personal website, e-resume, portfolio">
+    <meta name="description" content="Professional E-Resume - Siti Hajar Sofia">
+    <title>Siti Hajar Sofia | E-Resume</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        /* UiTM Logo */
+        .uitm-logo {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 1000;
+            background: white;
+            padding: 10px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        
+        .uitm-logo img {
+            width: 100px;
+            height: auto;
+            display: block;
+        }
+        
+        /* Main Container */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+        
+        /* Header Section */
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 90px 60px 60px;
+            text-align: center;
+            position: relative;
+        }
+        
+        .header::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 50px;
+            background: white;
+            border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+        }
+        
+        .profile-pic {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            border: 6px solid white;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+            object-fit: cover;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .header h1 {
+            color: white;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .header .tagline {
+            color: rgba(255,255,255,0.95);
+            font-size: 1.2em;
+            position: relative;
+            z-index: 1;
+        }
+        
+        /* Navigation Menu */
+        .nav-menu {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            padding: 30px 20px;
+            gap: 15px;
+            background: #f8f9fa;
+        }
+        
+        .nav-menu a {
+            text-decoration: none;
+            color: white;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 12px 28px;
+            border-radius: 25px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+        }
+        
+        .nav-menu a:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+        }
+        
+        .nav-menu a.active {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        }
+        
+        /* Content Section */
+        .content {
+            padding: 50px 40px;
+            text-align: center;
+        }
+        
+        .content h2 {
+            color: #333;
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+        
+        .content p {
+            color: #666;
+            font-size: 1.1em;
+            line-height: 1.8;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        /* Skills Styles */
+        .skills-container {
+            text-align: left;
+            margin-top: 30px;
+            max-width: 1000px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .skills-intro {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .skills-intro p {
+            color: #666;
+            font-size: 1.1em;
+            line-height: 1.6;
+        }
+        
+        .skills-section {
+            margin-bottom: 50px;
+        }
+        
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #667eea;
+        }
+        
+        .section-icon {
+            font-size: 2.5em;
+        }
+        
+        .section-header h3 {
+            color: #667eea;
+            font-size: 1.8em;
+            margin: 0;
+        }
+        
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+        
+        .skill-card {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 2px solid transparent;
+        }
+        
+        .skill-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 25px rgba(102, 126, 234, 0.2);
+            border-color: #667eea;
+        }
+        
+        .skill-icon {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        
+        .skill-card h4 {
+            color: #333;
+            font-size: 1.2em;
+            margin-bottom: 5px;
+        }
+        
+        .skill-detail {
+            color: #888;
+            font-size: 0.9em;
+            margin-bottom: 15px;
+        }
+        
+        .skill-bar {
+            background: #e9ecef;
+            height: 8px;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-top: 12px;
+        }
+        
+        .skill-progress {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            height: 100%;
+            border-radius: 10px;
+            transition: width 1s ease;
+        }
+        
+        .soft-skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+        
+        .soft-skill-card {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            transition: transform 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        }
+        
+        .soft-skill-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .soft-skill-icon {
+            font-size: 3em;
+            margin-bottom: 15px;
+        }
+        
+        .soft-skill-card h4 {
+            color: #667eea;
+            font-size: 1.3em;
+            margin-bottom: 12px;
+        }
+        
+        .soft-skill-card p {
+            color: #555;
+            font-size: 0.95em;
+            line-height: 1.6;
+            margin: 0;
+        }
+        
+        /* Footer */
+        .footer {
+            background: #2d3748;
+            color: white;
+            text-align: center;
+            padding: 30px;
+        }
+        
+        .footer p {
+            color: rgba(255,255,255,0.8);
+            font-size: 0.95em;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .uitm-logo {
+                position: static;
+                margin: 0 auto 20px;
+                width: fit-content;
+            }
+            
+            .header h1 {
+                font-size: 1.8em;
+            }
+            
+            .nav-menu {
+                padding: 20px 15px;
+            }
+            
+            .nav-menu a {
+                padding: 10px 20px;
+                font-size: 0.9em;
+            }
+            
+            .content {
+                padding: 30px 20px;
+            }
+            
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .soft-skills-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .section-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- UiTM Logo -->
+    <div class="uitm-logo">
+        <img src="images/uitmlogo.jpg" alt="UiTM Logo">
+    </div>
+
+    <!-- Main Container -->
+    <div class="container">
+        <!-- Header Section -->
+        <div class="header">
+            <img src="images/piapic.jpg" alt="Siti Hajar Sofia" class="profile-pic">
+            <h1>Siti Hajar Sofia</h1>
+            <p class="tagline">UiTM Student | Aspiring Professional</p>
+        </div>
+
+        <!-- Navigation Menu -->
+        <nav class="nav-menu">
+            <a href="index.html">Home</a>
+            <a href="about.html">About Me</a>
+            <a href="education.html">Education</a>
+            <a href="skills.html" class="active">Skills</a>
+            <a href="experience.html">Experience</a>
+            <a href="gallery.html">Gallery</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+
+        <!-- Skills Content -->
+        <div class="content">
+            <h2>My Skills</h2>
+            
+            <div class="skills-container">
+                <div class="skills-intro">
+                    <p>Here's a comprehensive overview of my technical and interpersonal abilities that I've developed through my studies and experiences.</p>
+                </div>
+                
+                <div class="skills-section">
+                    <div class="section-header">
+                        <span class="section-icon">💻</span>
+                        <h3>Computer Skills</h3>
+                    </div>
+                    
+                    <div class="skills-grid">
+                        <div class="skill-card">
+                            <div class="skill-icon">🎨</div>
+                            <h4>Canva Platform</h4>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 85%"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="skill-card">
+                            <div class="skill-icon">✏️</div>
+                            <h4>Adobe Creative Suite</h4>
+                            <p class="skill-detail">Photoshop & Illustrator</p>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 75%"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="skill-card">
+                            <div class="skill-icon">🖼️</div>
+                            <h4>Graphic Design</h4>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 80%"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="skill-card">
+                            <div class="skill-icon">🌐</div>
+                            <h4>Web Design</h4>
+                            <p class="skill-detail">XHTML & CSS</p>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 70%"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="skill-card">
+                            <div class="skill-icon">📊</div>
+                            <h4>Microsoft Office</h4>
+                            <p class="skill-detail">Word, Excel, PowerPoint</p>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 90%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="skills-section">
+                    <div class="section-header">
+                        <span class="section-icon">🤝</span>
+                        <h3>Soft Skills</h3>
+                    </div>
+                    
+                    <div class="soft-skills-grid">
+                        <div class="soft-skill-card">
+                            <div class="soft-skill-icon">💬</div>
+                            <h4>Customer Service</h4>
+                            <p>Experienced in handling customer inquiries and providing excellent service in a bakery environment</p>
+                        </div>
+                        
+                        <div class="soft-skill-card">
+                            <div class="soft-skill-icon">🗣️</div>
+                            <h4>Communication</h4>
+                            <p>Strong verbal and written communication skills in both professional and casual settings</p>
+                        </div>
+                        
+                        <div class="soft-skill-card">
+                            <div class="soft-skill-icon">👥</div>
+                            <h4>Teamwork</h4>
+                            <p>Collaborative team player with experience working in group projects and team environments</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <p>&copy; 2025 Siti Hajar Sofia | All Rights Reserved</p>
+            <p>Last Updated: November 2025</p>
+        </div>
+    </div>
+</body>
+</html>

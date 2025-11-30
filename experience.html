@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Siti Hajar Sofia">
+    <meta name="keywords" content="personal website, e-resume, portfolio">
+    <meta name="description" content="Professional E-Resume - Siti Hajar Sofia">
+    <title>Siti Hajar Sofia | E-Resume</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        /* UiTM Logo */
+        .uitm-logo {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 1000;
+            background: white;
+            padding: 10px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        
+        .uitm-logo img {
+            width: 100px;
+            height: auto;
+            display: block;
+        }
+        
+        /* Main Container */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+        
+        /* Header Section */
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 90px 60px 60px;
+            text-align: center;
+            position: relative;
+        }
+        
+        .header::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 50px;
+            background: white;
+            border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+        }
+        
+        .profile-pic {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            border: 6px solid white;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+            object-fit: cover;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .header h1 {
+            color: white;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .header .tagline {
+            color: rgba(255,255,255,0.95);
+            font-size: 1.2em;
+            position: relative;
+            z-index: 1;
+        }
+        
+        /* Navigation Menu */
+        .nav-menu {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            padding: 30px 20px;
+            gap: 15px;
+            background: #f8f9fa;
+        }
+        
+        .nav-menu a {
+            text-decoration: none;
+            color: white;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 12px 28px;
+            border-radius: 25px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+        }
+        
+        .nav-menu a:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+        }
+        
+        .nav-menu a.active {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        }
+        
+        /* Content Section */
+        .content {
+            padding: 50px 40px;
+            text-align: center;
+        }
+        
+        .content h2 {
+            color: #333;
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+        
+        .content p {
+            color: #666;
+            font-size: 1.1em;
+            line-height: 1.8;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        /* Experience Styles */
+        .experience-container {
+            text-align: left;
+            margin-top: 30px;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .experience-intro {
+            text-align: center;
+            color: #666;
+            font-size: 1.1em;
+            line-height: 1.7;
+            margin-bottom: 40px;
+        }
+        
+        .experience-timeline {
+            position: relative;
+            padding-left: 0;
+        }
+        
+        .exp-item {
+            display: flex;
+            gap: 25px;
+            margin-bottom: 40px;
+            position: relative;
+        }
+        
+        .exp-item:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            left: 29px;
+            top: 60px;
+            bottom: -40px;
+            width: 2px;
+            background: linear-gradient(180deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        .exp-marker {
+            font-size: 2em;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+            position: relative;
+            z-index: 1;
+        }
+        
+        .exp-content {
+            flex: 1;
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            border-left: 4px solid #667eea;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .exp-content:hover {
+            transform: translateX(5px);
+            box-shadow: 0 6px 25px rgba(102, 126, 234, 0.2);
+        }
+        
+        .exp-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .exp-header h3 {
+            color: #667eea;
+            font-size: 1.5em;
+            margin: 0;
+        }
+        
+        .exp-tag {
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: 600;
+            color: white;
+        }
+        
+        .exp-tag.work {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        .exp-tag.volunteer {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        }
+        
+        .exp-location {
+            color: #888;
+            font-size: 1em;
+            font-weight: 500;
+            margin-bottom: 15px;
+        }
+        
+        .exp-description {
+            color: #555;
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+        
+        .exp-skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .skill-tag {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            color: #667eea;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: 600;
+        }
+        
+        .experience-summary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 35px;
+            border-radius: 15px;
+            margin-top: 40px;
+            color: white;
+        }
+        
+        .experience-summary h3 {
+            text-align: center;
+            font-size: 1.5em;
+            margin-bottom: 25px;
+            color: white;
+        }
+        
+        .takeaway-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+        
+        .takeaway-card {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .takeaway-icon {
+            font-size: 2.5em;
+            display: block;
+            margin-bottom: 10px;
+        }
+        
+        .takeaway-card p {
+            color: white;
+            font-size: 0.95em;
+            line-height: 1.5;
+            margin: 0;
+        }
+        
+        /* Footer */
+        .footer {
+            background: #2d3748;
+            color: white;
+            text-align: center;
+            padding: 30px;
+        }
+        
+        .footer p {
+            color: rgba(255,255,255,0.8);
+            font-size: 0.95em;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .uitm-logo {
+                position: static;
+                margin: 0 auto 20px;
+                width: fit-content;
+            }
+            
+            .header h1 {
+                font-size: 1.8em;
+            }
+            
+            .nav-menu {
+                padding: 20px 15px;
+            }
+            
+            .nav-menu a {
+                padding: 10px 20px;
+                font-size: 0.9em;
+            }
+            
+            .content {
+                padding: 30px 20px;
+            }
+            
+            .exp-item {
+                flex-direction: column;
+            }
+            
+            .exp-item::after {
+                display: none;
+            }
+            
+            .exp-marker {
+                width: 50px;
+                height: 50px;
+                font-size: 1.5em;
+            }
+            
+            .exp-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .takeaway-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- UiTM Logo -->
+    <div class="uitm-logo">
+        <img src="images/uitmlogo.jpg" alt="UiTM Logo">
+    </div>
+
+    <!-- Main Container -->
+    <div class="container">
+        <!-- Header Section -->
+        <div class="header">
+            <img src="images/piapic.jpg" alt="Siti Hajar Sofia" class="profile-pic">
+            <h1>Siti Hajar Sofia</h1>
+            <p class="tagline">UiTM Student | Aspiring Professional</p>
+        </div>
+
+        <!-- Navigation Menu -->
+        <nav class="nav-menu">
+            <a href="index.html">Home</a>
+            <a href="about.html">About Me</a>
+            <a href="education.html">Education</a>
+            <a href="skills.html">Skills</a>
+            <a href="experience.html" class="active">Experience</a>
+            <a href="gallery.html">Gallery</a>
+            <a href="contacts.html">Contact</a>
+        </nav>
+
+        <!-- Experience Content -->
+        <div class="content">
+            <h2>Volunteer & Work Experience</h2>
+            
+            <div class="experience-container">
+                <p class="experience-intro">
+                    My professional journey includes hands-on experience in customer service and 
+                    community involvement through various volunteer activities.
+                </p>
+                
+                <div class="experience-timeline">
+                    <div class="exp-item">
+                        <div class="exp-marker">💼</div>
+                        <div class="exp-content">
+                            <div class="exp-header">
+                                <h3>Customer Service</h3>
+                                <span class="exp-tag work">Work Experience</span>
+                            </div>
+                            <p class="exp-location">Bakery Shop</p>
+                            <p class="exp-description">
+                                Provided exceptional customer service and handled daily transactions at a busy 
+                                bakery shop. Gained valuable experience in cash handling, customer assistance, 
+                                and maintaining a welcoming and friendly service environment. Developed strong 
+                                communication skills and the ability to work efficiently under pressure.
+                            </p>
+                            <div class="exp-skills">
+                                <span class="skill-tag">Customer Service</span>
+                                <span class="skill-tag">Cash Handling</span>
+                                <span class="skill-tag">Communication</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="exp-item">
+                        <div class="exp-marker">🤝</div>
+                        <div class="exp-content">
+                            <div class="exp-header">
+                                <h3>Community Volunteer</h3>
+                                <span class="exp-tag volunteer">Volunteer Work</span>
+                            </div>
+                            <p class="exp-location">Various Community & Library Events</p>
+                            <p class="exp-description">
+                                Actively participated in community service events and provided assistance in 
+                                library-related activities. Contributed to organizing events, helping community 
+                                members, and supporting educational initiatives. Enhanced teamwork abilities and 
+                                developed a deeper understanding of community engagement.
+                            </p>
+                            <div class="exp-skills">
+                                <span class="skill-tag">Teamwork</span>
+                                <span class="skill-tag">Event Support</span>
+                                <span class="skill-tag">Community Service</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="experience-summary">
+                    <h3>Key Takeaways</h3>
+                    <div class="takeaway-grid">
+                        <div class="takeaway-card">
+                            <span class="takeaway-icon">⭐</span>
+                            <p>Strong interpersonal and communication skills</p>
+                        </div>
+                        <div class="takeaway-card">
+                            <span class="takeaway-icon">💪</span>
+                            <p>Ability to work under pressure</p>
+                        </div>
+                        <div class="takeaway-card">
+                            <span class="takeaway-icon">🎯</span>
+                            <p>Commitment to service excellence</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <p>&copy; 2025 Siti Hajar Sofia | All Rights Reserved</p>
+            <p>Last Updated: November 2025</p>
+        </div>
+    </div>
+</body>
+</html>
